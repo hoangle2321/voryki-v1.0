@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111b24">
+  <title>Voryki — Bắt đầu hành trình</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2318272e'/%3E%3Cpath d='M13 14h10l9 29 9-29h10L36 52h-8z' fill='%23eac681'/%3E%3C/svg%3E">
+  <link rel="preload" href="assets/title-background.png" as="image">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="game.css">
+</head>
+<body>
+  <main id="app">
+    <section id="home" class="screen active" aria-label="Trang chủ Voryki">
+      <img class="home-art" src="assets/title-background.png" alt="Nhân vật chính cùng V01 nhìn về thung lũng, nông trại và tàn tích của Voryki" draggable="false">
+      <div class="home-shade" aria-hidden="true"></div>
+      <div class="home-content">
+        <p class="eyebrow">MỘT THẾ GIỚI ĐANG CHỜ BẠN</p>
+        <h1 class="wordmark">VORYKI</h1>
+        <div class="title-rule" aria-hidden="true"><i></i><span>◆</span><i></i></div>
+        <p class="home-subtitle">Khám phá điều chưa biết.<br>Tìm một nơi để trở về.</p>
+        <nav class="home-menu" aria-label="Menu chính">
+          <button id="playButton" class="play-button"><span class="play-symbol" aria-hidden="true">▶</span><span class="play-copy"><strong>PLAY</strong><small>BẮT ĐẦU HÀNH TRÌNH</small></span><span aria-hidden="true">→</span></button>
+          <button id="continueButton" class="menu-button" disabled><span>Tiếp tục</span><span class="button-detail" id="continueDetail">Chưa có hành trình</span></button>
+          <button id="settingsButton" class="menu-button"><span>Cài đặt</span><span aria-hidden="true">⚙</span></button>
+        </nav>
+      </div>
+      <div class="home-footer"><span><kbd>ENTER</kbd> Bắt đầu <span class="footer-dot">·</span> <kbd>F</kbd> Toàn màn hình</span><span>VORYKI <span class="footer-dot">/</span> Chương khởi đầu</span></div>
+    </section>
+
+    <section id="cinema" class="screen" aria-label="Dẫn chuyện mở đầu" tabindex="-1">
+      <img id="cinemaArt" class="cinema-art" alt="" draggable="false">
+      <div class="cinema-shade" aria-hidden="true"></div>
+      <button id="storyHome" class="story-home" aria-label="Về trang chủ và giữ tiến trình">← Trang chủ</button>
+      <div class="story-location" id="storyLocation"></div>
+      <div class="story-dots" id="storyDots" aria-label="Tiến trình đoạn mở đầu"></div>
+      <div class="story-dialogue" id="storyDialogue">
+        <div class="story-speaker">NGƯỜI DẪN TRUYỆN</div>
+        <p id="storyText" aria-live="polite"></p>
+        <div class="dialogue-footer"><span class="story-hint"><kbd>ENTER</kbd> / <kbd>SPACE</kbd> hoặc nhấp để tiếp tục</span><span id="storyCount"></span></div>
+        <button id="storyNext" class="story-next"><span id="nextLabel">Tiếp tục</span><span aria-hidden="true">▸</span></button>
+      </div>
+    </section>
+
+    <section id="game" class="screen" aria-label="Thế giới Voryki"></section>
+
+    <div id="settingsOverlay" class="shell-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="shell-panel">
+        <p class="eyebrow">VORYKI</p><h2 id="settingsTitle">Cài đặt</h2>
+        <div class="setting-row"><span>Chế độ hiển thị</span><button id="fullscreenButton" class="small-button">Toàn màn hình</button></div>
+        <div class="setting-row"><label for="motionToggle">Chuyển cảnh nhẹ</label><input type="checkbox" id="motionToggle" checked></div>
+        <div class="control-guide"><p><kbd>W A S D</kbd> / <kbd>↑ ↓ ← →</kbd> Di chuyển</p><p><kbd>E</kbd> Tương tác <span>·</span> <kbd>B</kbd> Túi đồ</p><p><kbd>J</kbd> Nhiệm vụ <span>·</span> <kbd>ESC</kbd> Đóng / Tạm dừng</p></div>
+        <button id="closeSettings" class="panel-primary">Xong</button>
+      </div>
+    </div>
+    <div id="newGameOverlay" class="shell-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="newGameTitle">
+      <div class="shell-panel confirm-panel">
+        <p class="eyebrow">HÀNH TRÌNH MỚI</p><h2 id="newGameTitle">Bắt đầu lại từ đầu?</h2>
+        <p>Tiến trình đang lưu sẽ được thay bằng một hành trình mới.</p>
+        <div class="confirm-actions"><button id="cancelNewGame" class="small-button">Giữ hành trình cũ</button><button id="confirmNewGame" class="panel-primary">Bắt đầu mới</button></div>
+      </div>
+    </div>
+    <div id="shellToast" role="status" aria-live="polite" hidden></div>
+  </main>
+  <script type="module" src="shell.js"></script>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
